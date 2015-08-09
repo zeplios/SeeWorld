@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*翻页模块*/
+.page_nav{height:22px;overflow:hidden;line-height:22px;}
+.page_nav .page_info{float:left;}
+.page_nav .page_nav_list{display:inline;float:left;margin-left:20px;}
+.page_nav .page_nav_li{display:inline;float:left;margin-left:10px;}
+.page_nav .current{padding:0 4px;border:1px solid #bbb;background-color:#bbb;color:#fff;line-height:20px;}
+.page_nav .page_nav_li_a{float:left;height:20px;padding:0 4px;border:1px solid #bbb;color:#2061c0;line-height:20px;}
+{border-color:#347ae3;background-color:#5498fc;color:#fff; text-decoration:none;}
+.page_nav .page_btn{width:120px;float:right;}
+.page_nav .btn_prev_span,
+.page_nav .btn_prev_a{float:left;}
+.page_nav .btn_next_a{float:right;}
+.page_nav .btn_prev_span,
+.page_nav .btn_prev_a,
+.page_nav .btn_next_span,
+.page_nav .btn_next_a{height:20px;padding:0 10px;border:1px solid #bbb;line-height:20px;}
+.page_nav .btn_prev_span,
+.page_nav .btn_next_span{color:#999;}
+.page_nav .btn_prev_a,
+.page_nav .btn_next_a{color:#2061c0;}
+.page_nav .page_nav_li_a:hover,
+.page_nav .btn_prev_a:hover,
+.page_nav .btn_next_a:hover{border-color:#347ae3;background-color:#5498fc;color:#fff;text-decoration:none;}

@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+.header { position:fixed; _position:absolute; width:100%; height:46px; background-color:rgba(46,46,46,0.9); background-color:#2e2e2e\9; color:#fff; top:0; left:0; z-index:399;}
+.header .header_container { width:960px; margin:0 auto; }
+.header .logo { display:inline; float:left; width:100px; height:40px; margin:3px 0 0 3px; background:url(../images/logo.png) no-repeat; text-indent:-999em; }
+.header .login_search { display:inline; position:relative; float:left; margin:22px 0 0 20px; line-height:16px; z-index:99; }
+.header .login_search li { position:relative; float:left; height:24px; padding:0 5px 0 5px; }
+.header .login_search .status_open{ background:url(../images/bg_ico.png) no-repeat center -100px;} 
+.header .head_button { color:#fff; }
+/*.header .small_arrow { position:absolute; width:7px; height:4px; background:url(../images/bg_ico.png) no-repeat -2px -105px; top:-4px; left:17px; }*/
+
+/*登录窗口*/
+.header .login_show { display:none; position:absolute; width:240px; padding:10px 0 10px 20px; border:1px solid #666; border-top:0 none; border-radius:0 0 3px 3px; background-color:#ebebeb; color:#000; z-index:10; top:24px; left:-5px; }
+.header .login_show .user_info p { height:30px; font-size:14px; line-height:30px; }
+.header .login_show .options { height:20px; margin-top:10px; padding-left:51px; overflow:hidden; }
+.header .login_show .remember_info { float:left; width:60px; color:#333; }
+.header .login_show .about_user { float:right; width:120px; }
+.header .login_show .forget_pass,
+.header .login_show .register { float:left; padding:0 5px; color:#008787; }
+.header .login_show .login_btn { padding:15px 0 0 51px; }
+.header .login_show .login_btn_a { display:inline-block; height:24px; padding:0 20px; border:1px solid #3d35b5; background:url(../images/btn_all.png) repeat-x 0 0; color:#fff; font-size:14px; line-height:24px; }
+.header .login_show .login_btn_a:hover { background-position:0 -24px; text-decoration:none; }
+
+/*用户登录后的个人中心窗口*/
+.header .personal_show { display:block; position:absolute; width:355px; padding:3px; border:1px solid #666; border-top:0 none; border-radius:0 0 3px 3px; background-color:#ebebeb; color:#000; z-index:10; top:24px; left:-5px; }
+.header .personal_show .user_mini_avatar{float:left;width:25px;height:25px;overflow:hidden;}
+.header .personal_show .mini_avatar_a_img{width:25px;height:25px;}
+.header .personal_show .personal_mini_nav{float:left;width:330px;padding:4px 0;}
+.header .personal_show .mini_nav_item{position:static;float:left;height:16px;padding:0 9px;}
+.header .personal_show .mini_nav_link{color:#666;}
+
+/*搜索窗口*/
+.header .search_show { display:none; position:absolute; width:240px; padding:10px 0 10px 15px; border:1px solid #666; border-top:0 none; border-radius:0 0 3px 3px; background-color:#ebebeb; color:#000; z-index:10; top:24px; left:-5px; }
+.header .search_form{ height:22px; overflow:hidden;}
+.header .search_btn { padding:10px 11px 0 0; }
+.header .search_btn_a { display:inline-block; float:right; height:24px; padding:0 20px; border:1px solid #d32424; background:url(../images/btn_all.png) repeat-x 0 -48px; color:#fff; font-size:14px; line-height:24px; }
+.header .search_btn_a:hover { background-position:0 -72px; text-decoration:none; }
+.header .nav { display:inline; float:right; margin:0 50px 0 0;}
+.header .nav li { display:inline; float:left; margin:0 5px; }
+.header .nav li a { display:inline-block; height:46px; width:40px; padding:0 10px; color:#fff; font-size:16px; text-align:center; line-height:46px; }
+.header .nav li a:hover { background-color:#111; text-decoration:none; }
+.header .nav .current a { background:url(../images/bg_ico.png) no-repeat 13px 0; }
+.header .nav .current a:hover { background-color:#111;}

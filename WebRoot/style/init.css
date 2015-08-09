@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+/*------CSS初始化------*/
+a img {border:none;}
+a {text-decoration:none;}
+em,var {font-style:normal;}
+ul,ol {padding:0;list-style-type:none;}
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,p {margin:0;}
+body,td,th,h1,h2,h3,h4,h5,h6 {font-size:12px;font-family:"Microsoft YaHei","YouYuan","SimHei",sans-serif,"SimSun"}
+input,textarea,a,button {outline:none;}
+input::-moz-focus-inner {border:0;}
+/*line-height用于统一不同浏览器的行高*/
+body {background:#fff;line-height:14px;}
+input,textarea,button {border:0 none;background:#fff;}
+a:hover {text-decoration:underline;}
+
+/*两种清浮动方法*/
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac */
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clear{clear:both;height:0;font:0/0 Arial;visibility:hidden;}
+/*两种清浮动方法*/

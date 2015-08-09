@@ -1,0 +1,31 @@
+USER		privilege
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+ADMIN——ALL ##管理员
+EDITOR——Modify Upload Read  ##网站编辑
+ASHARER——Upload Read  ##最高分享者
+VSHARER——UPLOAD Read Multimedia  ##视频资源分享者
+DSHARER——UPLOAD READ Document   ##文档资源分享者
+USER——Read   ##普通用户
+####################################
+Resource
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+MOVIE   #电影
+VIDEO   #视频
+PLAY    #电视剧
+BOOK    #电子书 
+DWARE   #文本课件
+VWARE   #视频课件
+
+####################################
+Operation
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+DELETE  
+UPLOAD
+READ
+MODIFY
+
+###################################
+Permission
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+ALL #所有权限
+以operation_resource命名

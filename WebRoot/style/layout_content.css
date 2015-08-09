@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*此css用于规定公用结构框架以及可用的内容模块的样式*/
+
+/*背景及内容框架*/
+body { background:url(../images/bg.png) repeat; }
+h3{height:50px;border-bottom:2px solid;background:url(../images/bg_title.png) no-repeat;/*text-indent:-999em;*/}
+.main{width:950px;margin:0 auto ;padding-top:60px;overflow:hidden;color:#333;}
+.main_col_l{float:left;width:630px;}
+.main_col_r{float:right;width:280px;}
+
+/*列表模块显示信息公用的部分*/
+.v_name_a{color:#333;}
+.v_img_a{display:inline-block;}
+.v_info{padding:4px 0 0 0;color:#666;line-height:16px;}
+.v_info .click_count{float:left;height:16px;padding-left:15px;background:url(../images/bg_ico.png) no-repeat 0 -126px;}
+.v_info .comment_count{display:inline;float:left;height:16px;margin-left:30px;padding-left:20px;background:url(../images/bg_ico.png) no-repeat 0 -149px;}
+
+/*视频列表模块(16:9的封面)*/
+.video_container{margin-top:20px;padding:0 20px 0 30px;}
+.video_list{width:615px;margin-left:-35px;overflow:hidden;}
+.video_li{display:inline;float:left;width:170px;margin-left:35px;padding-bottom:20px;}
+.video_li .cover_large_box{position:relative;width:170px;height:100px;background:url(../images/box_shadow.png) no-repeat 0 0;_background-image:url(../images/box_shadow_ie6.gif);}
+.video_li .v_time{position:absolute;height:16px;padding:0 3px;background:rgba(0,0,0,0.6); filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#99000000,endcolorstr=#99000000);color:#fff;font-family:"SimSun",sans-serif;line-height:16px;top:74px;right:10px;}
+.video_li .v_name{min-height:24px;padding-right:9px;line-height:24px;}
+
+/*电影列表模块(3:4的封面)*/
+.movie_container{margin-top:20px;padding:0 25px 0 25px;}
+.movie_list{width:620px;margin-left:-30px;overflow:hidden;}
+.movie_li{display:inline;float:left;width:125px;margin-left:30px;padding-bottom:20px;}
+.movie_li .cover_vertical_box{position:relative;width:125px;height:160px;background:url(../images/box_shadow.png) no-repeat 0 -110px;_background-image:url(../images/box_shadow_ie6.gif);}
+.movie_li .v_time{position:absolute;height:16px;padding:0 3px;background:rgba(0,0,0,0.6); filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#99000000,endcolorstr=#99000000);color:#fff;font-family:"SimSun",sans-serif;line-height:16px;top:136px;right:11px;}
+.movie_li .v_name{min-height:24px;padding-right:10px;line-height:24px;}
+
+/*侧边较小的列表显示模块(支持16:9及3:4两种封面)*/
+.sidebar_list{margin-top:20px;}
+.sidebar_list .sidebar_li_vital,.sidebar_list .sidebar_li{width:280px;margin-bottom:20px;overflow:hidden;}
+.sidebar_list .cover_small_box,.sidebar_list .cover_small_vertical_box{float:left;padding:1px;border:1px solid #bbb;background-color:#fff;}
+.sidebar_list .cover_small_box{width:112px;height:63px;overflow:hidden;}
+.sidebar_list .cover_small_vertical_box{width:84px;height:112px;overflow:hidden;}
+.sidebar_list .v_info_box{margin-left:125px;}
+.sidebar_list .v_info_vertical_box{margin-left:97px;}
+.sidebar_list .v_name{margin-bottom:5px;line-height:20px;}
+
+/*翻页模块*/
+.page_nav{height:22px;overflow:hidden;line-height:22px;}
+.page_nav .page_info{float:left;}
+.page_nav .page_nav_list{display:inline;float:left;margin-left:20px;}
+.page_nav .page_nav_li{display:inline;float:left;margin-left:10px;}
+.page_nav .currentPage{padding:0 4px;border:1px solid #bbb;background-color:#bbb;color:#fff;line-height:20px;}
+.page_nav .page_nav_li_a{float:left;height:20px;padding:0 4px;border:1px solid #bbb;color:#2061c0;line-height:20px;}
+{border-color:#347ae3;background-color:#5498fc;color:#fff; text-decoration:none;}
+.page_nav .page_btn{width:120px;float:right;}
+.page_nav .btn_prev_span,.page_nav .btn_prev_a{float:left;}
+.page_nav .btn_next_a{float:right;}
+.page_nav .btn_prev_span,.page_nav .btn_prev_a,.page_nav .btn_next_span,.page_nav .btn_next_a{height:20px;padding:0 10px;border:1px solid #bbb;line-height:20px;}
+.page_nav .btn_prev_span,.page_nav .btn_next_span{color:#999;}
+.page_nav .btn_prev_a,.page_nav .btn_next_a{color:#2061c0;}
+.page_nav .page_nav_li_a:hover,.page_nav .btn_prev_a:hover,.page_nav .btn_next_a:hover{border-color:#347ae3;background-color:#5498fc;color:#fff;text-decoration:none;}

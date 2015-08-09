@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+	<sec:http entry-point-ref="loginEntryPoint" access-denied-page="/accessDenied.jsp">
+		<sec:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<sec:intercept-url pattern="/admin/*.**"
+			access="ROLE_ADMIN" />
+		<sec:intercept-url pattern="/svc/multimedia/Multimedia/play.action**"
+			access="ROLE_ADMIN,ROLE_COMMON,ROLE_EDITOR,ROLE_ASHARER,ROLE_DSHARER,ROLE_VSHARER" />
+		<sec:intercept-url pattern="/svc/user/User/security.action**"
+			filters="none" />
+		<sec:intercept-url pattern="/svc/user/User/*register*"
+			filters="none" />
+		<sec:intercept-url pattern="/svc/user/User/avatar*"
+			filters="none" />
+		<sec:intercept-url pattern="/admin/login.html*"
+			filters="none" />
+		<sec:intercept-url pattern="/admin/*/*"
+			filters="none" />
+		<sec:intercept-url pattern="/svc/user/**"
+			access="ROLE_ADMIN,ROLE_COMMON,ROLE_EDITOR,ROLE_ASHARER,ROLE_DSHARER,ROLE_VSHARER" />
+		
+	</sec:http>
+	<sec:authentication-manager alias="authenticationManager" />
+
+	<sec:authentication-provider
+		user-service-ref="seeworldUserDetailsService">
+		<sec:password-encoder hash="md5" />
+	</sec:authentication-provider>
+
+	<bean id="loggerListener"
+		class="org.springframework.security.event.authentication.LoggerListener" />
+
+	<!-- loginEntryPoint在未登录用户访问被保护资源时自动跳转到相应的前后台登录页面 -->
+	<bean id="loginEntryPoint" class="edu.tju.ina.seeworld.logic.security.LoginEntryPoint">
+		<property name="urlStrategy" ref="urlStrategy" />
+	</bean>
+
+	<!-- 注销过滤器，完成前台用户注销时的定向功能 -->
+	<bean id="preLogoutFilter" class="org.springframework.security.ui.logout.LogoutFilter">
+		<sec:custom-filter before="LOGOUT_FILTER" />
+		<constructor-arg value="/" />
+		<constructor-arg>
+			<list>
+				<bean
+					class="org.springframework.security.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/security/j_spring_security_logout" />
+	</bean>
+	<!-- 注销过滤器，完成后台管理员注销时的定向功能 -->
+	<bean id="adminLogoutFilter" class="org.springframework.security.ui.logout.LogoutFilter">
+		<sec:custom-filter position="LOGOUT_FILTER" />
+		<constructor-arg value="/admin/login.html" />
+		<constructor-arg>
+			<list>
+				<bean
+					class="org.springframework.security.ui.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/back/j_spring_security_logout" />
+	</bean>
+
+	<!-- 验证前台用户 -->
+	<bean id="preLoginFilter"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+		<sec:custom-filter before="AUTHENTICATION_PROCESSING_FILTER" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureUrl" value="/login.jsp?error=true" />
+		<property name="defaultTargetUrl" value="/svc/user/User/login.action" />
+		<property name="alwaysUseDefaultTargetUrl" value="true" />
+		<property name="filterProcessesUrl" value="/security/j_spring_security_check" />
+	</bean>
+	<!-- 验证后台用户 -->
+	<bean id="adminLoginFilter"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+		<sec:custom-filter position="AUTHENTICATION_PROCESSING_FILTER" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="filterProcessesUrl" value="/back/j_spring_security_check" />
+		<!-- 认证错误页面，已经被覆盖，由urlStrategy决定-->
+		<property name="authenticationFailureUrl" value="/admin/login.html?error" />
+		<!-- 认证成功页面-->
+		<property name="defaultTargetUrl" value="/admin/index_admin.jsp" />
+		<property name="alwaysUseDefaultTargetUrl" value="true" />
+	</bean>
+
+	<bean id="urlStrategy" class="edu.tju.ina.seeworld.logic.security.URLStrategyImpl">
+		<property name="frontTargetURL" value="/login.jsp?login=false" />
+		<property name="adminTargetURL" value="/admin/login.html" />
+	</bean>
+</beans>

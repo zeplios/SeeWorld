@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url("header.css");
+@import url("footer.css");
+@import url("formstyle.css");
+@import url("layout_content.css");
+
+.updates .updates_h3{border-color:#4763b6;background-position:0 0;}
+.updates .updates_h3_a{float:left;width:230px;height:45px;}
+.recommend .recommend_h3{border-color:#4763b6;background-position:0 -100px;}
+.recommend .recommend_h3_a{float:left;width:220px;height:45px;}
+.recommend{margin-top:20px;}
+.popular .popular_h3{border-color:#d9354f;background-position:0 -50px;}
+.popular .popular_h3_a{float:left;width:210px;height:45px;}

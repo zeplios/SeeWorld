@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+.footer { width:100%; height:46px; margin-top:60px; background-color:#2e2e2e; overflow:hidden; color:#fff; }
+.footer_container { width:960px; margin:0 auto; padding:14px 0 18px 0; overflow:hidden; }
+.link { float:left; width:240px; }
+.link li { display:inline; float:left; margin:0 10px; }
+.link li a { color:#fff; }
+.copyright { float:right; }

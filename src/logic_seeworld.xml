@@ -1,0 +1,200 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- ========================User================================== -->
+
+	<bean id="userLogic" class="edu.tju.ina.seeworld.logic.UserLogic">
+		<property name="academyDao" ref="academyDao"></property>
+		<property name="specialtyDao" ref="specialtyDao"></property>
+		<property name="roleDao" ref="roleDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="privacySettingLogic" ref="privacySettingLogic"></property>
+		<property name="invitationCodeLogic" ref="invitationCodeLogic"></property>
+		<property name="settingLogic" ref="settingLogic"></property>
+	</bean>
+	<bean id="academyLogic" class="edu.tju.ina.seeworld.logic.AcademyLogic">
+		<property name="academyDao" ref="academyDao"></property>
+	</bean>
+	<bean id="specialtyLogic" class="edu.tju.ina.seeworld.logic.SpecialtyLogic">
+		<property name="academyDao" ref="academyDao"></property>
+		<property name="specialtyDao" ref="specialtyDao"></property>
+	</bean>
+	<bean id="invitationCodeLogic" class="edu.tju.ina.seeworld.logic.InvitationCodeLogic">
+		<property name="invitationCodeDao" ref="invitationCodeDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+	</bean>
+	<bean id="requestLogic" class="edu.tju.ina.seeworld.logic.RequestLogic">
+		<property name="friendLogic" ref="friendLogic"></property>
+		<property name="requestDao" ref="requestDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+		<property name="settingLogic" ref="settingLogic"></property>
+	</bean>
+	<bean id="statusLogic" class="edu.tju.ina.seeworld.logic.StatusLogic">
+		<property name="statusDao" ref="statusDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="newThingsLogic" class="edu.tju.ina.seeworld.logic.NewThingsLogic">
+		<property name="newThingsDao" ref="newThingsDAO"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="newThingsReplyDao" ref="newThingsReplyDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+	</bean>
+	<bean id="friendLogic" class="edu.tju.ina.seeworld.logic.FriendLogic">
+		<property name="friendDao" ref="friendDao"></property>
+		<property name="requestDao" ref="requestDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="recommendationLogic" class="edu.tju.ina.seeworld.logic.RecommendationLogic">
+		<property name="recommendationDao" ref="recommendationDao"></property>
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+	</bean>
+	<bean id="privacySettingLogic" class="edu.tju.ina.seeworld.logic.PrivacySettingLogic">
+		<property name="privacySettingDao" ref="privacySettingDAO"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+
+
+	<bean id="seeworldUserDetailsService"
+		class="edu.tju.ina.seeworld.logic.security.SeeworldUserDetailsService">
+		<property name="userDao" ref="userDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+	</bean>
+
+	<bean id="commentLogic" class="edu.tju.ina.seeworld.logic.CommentLogic">
+		<property name="commentDao" ref="commentDao"></property>
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="newThingsLogic" ref="newThingsLogic"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="movieDao" ref="movieDao"></property>
+		<property name="singleSerialDao" ref="singleSerialDao"></property>
+		<property name="videoDao" ref="videoDao"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+	<bean id="collectionLogic" class="edu.tju.ina.seeworld.logic.CollectionLogic">
+		<property name="collectionDao" ref="collectionDao"></property>
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="newThingsLogic" ref="newThingsLogic"></property>
+		<property name="singleSerialDao" ref="singleSerialDao"></property>
+		<property name="videoDao" ref="videoDao"></property>
+		<property name="movieDao" ref="movieDao"></property>
+		<property name="serialDao" ref="serialDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+		<property name="vOPOTransformator" ref="vOPOTransformator"></property>
+	</bean>
+
+	<bean id="messageLogic" class="edu.tju.ina.seeworld.logic.MessageLogic">
+		<property name="userdao" ref="userDao"></property>
+		<property name="messagedao" ref="messageDao"></property>
+	</bean>
+	
+	<bean id="mainpageLogic" class="edu.tju.ina.seeworld.logic.MainpageLogic">
+		<property name="mainpageDao" ref="mainpageDao"></property>
+	</bean>
+	<!--
+		==========================VIDEO PART================================
+	-->
+
+
+	<bean id="continueFtp" class="test.ContinueFTP">
+	</bean>
+
+	<bean id="uploadVideoLogic" class="edu.tju.ina.seeworld.logic.UploadVideoLogic">
+		<property name="videoDao" ref="videoDao"></property>
+		<property name="formatDao" ref="formatDao"></property>
+		<property name="continueFtp" ref="continueFtp"></property>
+	</bean>
+
+	<bean id="movieLogic" class="edu.tju.ina.seeworld.logic.MovieLogic">
+		<property name="movieDao" ref="movieDao"></property>
+		<property name="settingLogic" ref="settingLogic"></property>
+	</bean>
+	<bean id="categoryLogic" class="edu.tju.ina.seeworld.logic.CategoryLogic">
+		<property name="categoryDao" ref="categoryDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+	<bean id="areaAndCountryLogic" class="edu.tju.ina.seeworld.logic.AreaAndCountryLogic">
+		<property name="areaAndCountryDao" ref="areaAndCountryDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+
+	<bean id="uploadTVPlayLogic" class="edu.tju.ina.seeworld.logic.UploadTVPlayLogic">
+		<property name="categoryDao" ref="categoryDao"></property>
+		<property name="directorDao" ref="directorDao"></property>
+		<property name="actorDao" ref="actorDao"></property>
+		<property name="areaAndCountryDao" ref="areaAndCountryDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="resourceDao" ref="resourceDao"></property>
+		<property name="keyWordDao" ref="keyWordDao"></property>
+		<property name="keyWordRelationshipDao" ref="keyWordRelationshipDao"></property>
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="singleSerialDao" ref="singleSerialDao"></property>
+	</bean>
+
+	<bean id="directorLogic" class="edu.tju.ina.seeworld.logic.DirectorLogic">
+		<property name="directorDao" ref="directorDao"></property>
+	</bean>
+	<bean id="actorLogic" class="edu.tju.ina.seeworld.logic.ActorLogic">
+		<property name="actorDao" ref="actorDao"></property>
+	</bean>
+	<bean id="lecturerLogic" class="edu.tju.ina.seeworld.logic.LecturerLogic">
+		<property name="lecturerDao" ref="lecturerDao"></property>
+	</bean>
+
+	<!-- ========================================================== -->
+
+	<!--
+		==========================VIDEO PART================================
+	-->
+	<bean id="uploadMovieLogic" class="edu.tju.ina.seeworld.logic.UploadMovieLogic">
+		<property name="movieDao" ref="movieDao"></property>
+		<property name="formatDao" ref="formatDao"></property>
+		<property name="continueFtp" ref="continueFtp"></property>
+		<property name="dirDao" ref="directorDao"></property>
+		<property name="actorDao" ref="actorDao"></property>
+		<property name="areaDao" ref="areaAndCountryDao"></property>
+	</bean>
+
+	<bean id="videoLogic" class="edu.tju.ina.seeworld.logic.VideoLogic">
+		<property name="videoDao" ref="videoDao"></property>
+		<property name="settingLogic" ref="settingLogic"></property>
+	</bean>
+		<bean id="organizationLogic" class="edu.tju.ina.seeworld.logic.OrganizationLogic">
+		<property name="organizationDao" ref="organizationDao"></property>
+	</bean>
+	<!-- ========================================================== -->
+
+	<!--
+		==========================TV PART================================
+	-->
+	<bean id="multimediaLogic" class="edu.tju.ina.seeworld.logic.MultimediaLogic">
+		<property name="multimediaDao" ref="multimediaDao"></property>
+	</bean>
+	<bean id="singleSerialLogic" class="edu.tju.ina.seeworld.logic.SingleSerialLogic">
+		<property name="singleSerialDao" ref="singleSerialDao"></property>
+		<property name="serialDao" ref="serialDao"></property>
+	</bean>
+	<bean id="serialLogic" class="edu.tju.ina.seeworld.logic.SerialLogic">
+		<property name="serialDao" ref="serialDao"></property>
+	</bean>
+
+	<!--
+		==================================================================
+	-->
+	<!--
+		==========================RABC PART================================
+	-->
+	<bean id="roleLogic" class="edu.tju.ina.seeworld.logic.RoleLogic">
+		<property name="roleDao" ref="roleDao"></property>
+	</bean>
+	<!--
+		===================================================================
+	-->
+	<bean id="settingLogic" class="edu.tju.ina.seeworld.logic.SettingLogic">
+		<property name="settingDao" ref="settingDao"></property>
+	</bean>
+	</beans>

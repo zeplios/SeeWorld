@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="edu.tju.ina.seeworld.po.resource.AreaAndCountry" table="area_country" catalog="seeworld_db">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+        <property name="alias" type="java.lang.String">
+            <column name="alias"/>
+        </property>
+        <property name="addTime" type="java.sql.Timestamp">
+            <column name="addTime" length="19" />
+        </property>
+        <set name="multimedias" inverse="true">
+            <key>
+                <column name="area" not-null="true" />
+            </key>
+            <one-to-many class="edu.tju.ina.seeworld.po.resource.Multimedia" />
+        </set>
+    </class>
+</hibernate-mapping>

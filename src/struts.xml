@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+<constant name="struts.ui.theme" value="simple" />
+<constant name="struts.ui.templateDir" value="template" />
+<constant name="struts.ui.templateSuffix" value="ftl" />
+<constant name="struts.custom.i18n.resources" value="messages"/>
+<constant name="struts.multipart.maxSize" value="1000000000" />
+<constant name="struts.url.includeParams" value="none"></constant>
+<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+<!-- =========================GLOBAL PART================================= -->
+	<!-- <package name="global" extends="struts-default" namespace="">
+	</package> -->
+<!-- ====================================================================== -->
+<include file="struts-action-config.xml"></include>
+<include file="struts-ajax-config.xml"></include>
+</struts>

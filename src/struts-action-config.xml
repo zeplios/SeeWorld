@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+	<constant name="struts.url.includeParams" value="none" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+
+	<package name="common" extends="struts-default" namespace="">
+		<default-action-ref name="notFound"></default-action-ref>
+		<action name="/svc/*/*/*" class="edu.tju.ina.seeworld.struts.action.{1}.{2}Action"
+			method="{3}Action">
+			<interceptor-ref name="modelDriven">
+				<param name="refreshModelBeforeResult">true</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack"/>
+			<result name="tomainpage">/login.jsp
+			</result>
+			<result name="toPersonalCenter">/WEB-INF/page/user/personalCenter.jsp
+			</result>
+			<result name="toRegisterPage">/WEB-INF/page/user/accountSignin.jsp
+			</result>
+			<result name="moremultimedia">/WEB-INF/page/multimedia/{2}More.jsp
+			</result>
+			<result name="listmultimedia">/WEB-INF/page/multimedia/{2}Overview.jsp
+			</result>
+			<result name="viewmultimedia">/WEB-INF/page/multimedia/{2}FilteredBrowse.jsp
+			</result>
+			<result name="playmultimedia">/WEB-INF/page/multimedia/${type}View.jsp
+			</result>
+			<result name="searchresult">/WEB-INF/page/multimedia/SearchResult.jsp
+			</result>
+			<result name="list">/admin/list{2}.jsp
+			</result>
+			<result name="list_redirect" type="redirect">/svc/multimedia/{2}/list.action
+			</result>
+			<result name="add">/admin/add{2}.jsp
+			</result>
+			<result name="update">/admin/update{2}.jsp
+			</result>
+		</action>
+		<action name="notFound">
+			<result>/notFound.jsp</result>
+		</action>
+	</package>
+</struts>

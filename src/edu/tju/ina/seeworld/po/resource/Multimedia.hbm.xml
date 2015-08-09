@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="edu.tju.ina.seeworld.po.resource.Multimedia" table="multimedia"
+		catalog="seeworld_db">
+		<id name="id" type="java.lang.Integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="resource" class="edu.tju.ina.seeworld.po.rbac.Resource"
+			fetch="select" lazy="false">
+			<column name="resourceId" not-null="true">
+				<comment>多媒体文件的资源类型</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="areaAndCountry"
+			class="edu.tju.ina.seeworld.po.resource.AreaAndCountry" fetch="join"
+			lazy="false">
+			<column name="area" />
+		</many-to-one>
+		<property name="title" type="java.lang.String">
+			<column name="title" length="50" not-null="true">
+				<comment>多媒体文件名称</comment>
+			</column>
+		</property>
+		<property name="alias" type="java.lang.String">
+			<column name="alias">
+				<comment>多媒体文件别名，包括外文名</comment>
+			</column>
+		</property>
+		<property name="publishedYear" type="java.lang.String">
+			<column name="publishedYear" length="4" />
+		</property>
+		<property name="image" type="java.lang.String" length="200">
+			<column name="image">
+				<comment>多媒体文件对应的图片</comment>
+			</column>
+		</property>
+
+		<property name="introduction" type="java.lang.String">
+			<column name="introduction" length="65535">
+				<comment>多媒体文件的相关说明</comment>
+			</column>
+		</property>
+
+
+		<property name="addTime" type="java.sql.Timestamp">
+			<column name="addTime" length="0" not-null="true">
+				<comment>多媒体文件的上传时间</comment>
+			</column>
+		</property>
+		<property name="clickCount" type="java.lang.Integer">
+			<column name="clickCount">
+				<comment>点击次数</comment>
+			</column>
+		</property>
+		<property name="commentsCount" type="java.lang.Integer">
+			<column name="commentsCount">
+				<comment>评论次数</comment>
+			</column>
+		</property>
+		<property name="collectedCount" type="java.lang.Integer">
+			<column name="collectedCount">
+				<comment>收藏次数</comment>
+			</column>
+		</property>
+		<property name="deleted" type="java.lang.Boolean">
+			<column name="deleteSign">
+				<comment>文件是否被删除，0表示未被删除，1表示已删除</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.Boolean">
+			<column name="status">
+				<comment>媒体多文件是否已通过审查，0表示未通过，1表示已通过</comment>
+			</column>
+		</property>
+		<property name="recommendedCount" type="java.lang.Integer">
+			<column name="recommendedCount">
+				<comment>被推荐的次数</comment>
+			</column>
+		</property>
+		<many-to-one name="user" class="edu.tju.ina.seeworld.po.user.User"
+			fetch="select" lazy="false">
+			<column name="uploader_id" not-null="true">
+				<comment>多媒体文件的上传者</comment>
+			</column>
+		</many-to-one>
+		<set name="collections" inverse="true">
+			<key>
+				<column name="target_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Collection" />
+		</set>
+
+		<set name="comments" inverse="true" lazy="false">
+			<key>
+				<column name="target_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Comment" />
+		</set>
+		<set name="keyWordRelationships" inverse="true">
+			<key>
+				<column name="target_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.resource.KeyWordRelationship" />
+		</set>
+
+		<!--=============================子类Movie=========================-->
+		<joined-subclass name="edu.tju.ina.seeworld.po.resource.Movie" table="movie">
+			<key column="ID" />
+			<property name="path" type="java.lang.String">
+				<column name="path" length="200" not-null="true">
+					<comment>多媒体文件的存储路径</comment>
+				</column>
+			</property>
+			<property name="size" type="java.lang.Integer">
+				<column name="size" not-null="true">
+					<comment>多媒体文件的大小</comment>
+				</column>
+			</property>
+			<property name="process" type="java.lang.Float">
+				<column name="process" precision="10" scale="0" not-null="true">
+					<comment>多媒体文件的上传进度</comment>
+				</column>
+			</property>
+			<set name="category" inverse="false" table="multimedia_category"
+				fetch="select" lazy="false">
+				<key>
+					<column name="multimediaID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Category"
+					column="categoryID" />
+			</set>
+			<set name="directors" table="multimedia_directors" lazy="false">
+				<key>
+					<column name="mID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Director"
+					column="dID" />
+			</set>
+
+			<set name="actors" table="multimedia_actors" lazy="false">
+				<key>
+					<column name="mID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Actor"
+					column="aID" />
+			</set>
+		</joined-subclass>
+		
+		<!--==========================子类Video===========================-->
+		<joined-subclass name="edu.tju.ina.seeworld.po.resource.Video" table="video">
+			<key column="ID" />
+			<property name="sections" type="java.lang.Integer">
+				<column name="sections" not-null="true">
+					<comment>视频是否分为多部分，默认为1部</comment>
+				</column>
+			</property>
+
+			<property name="path" type="java.lang.String">
+				<column name="path" length="200" not-null="true">
+					<comment>多媒体文件的存储路径</comment>
+				</column>
+			</property>
+			<property name="size" type="java.lang.Integer">
+				<column name="size" not-null="true">
+					<comment>多媒体文件的大小</comment>
+				</column>
+			</property>
+			<property name="process" type="java.lang.Float">
+				<column name="process" precision="10" scale="0" not-null="true">
+					<comment>多媒体文件的上传进度</comment>
+				</column>
+			</property>
+			<property name="sectionNum" type="java.lang.Integer">
+				<column name="section_num">
+					<comment>当视频为多部分时，标示本视频文件的序数</comment>
+				</column>
+			</property>
+			<property name="sectionTitle" type="java.lang.String">
+				<column name="sectionTitle" length="100" not-null="false">
+					<comment>多媒体文件如果是分集且有子标题，则存于此</comment>
+				</column>
+			</property>
+			<property name="sectionAlias" type="java.lang.String">
+				<column name="sectionAlias" length="100" />
+			</property>
+			<set name="category" inverse="false" table="multimedia_category"
+				fetch="select" lazy="false">
+				<key>
+					<column name="multimediaID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Category"
+					column="categoryID" />
+			</set>
+			<set name="lecturers" inverse="false" table="videos_lecturers"
+				lazy="true">
+				<key>
+					<column name="vID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Lecturer"
+					column="lID" />
+			</set>
+		</joined-subclass>
+		
+		<!--=============================子类Serial=========================-->
+		<joined-subclass name="edu.tju.ina.seeworld.po.resource.Serial" table="serial">
+			<key column="ID" />
+			<property name="seasons" type="java.lang.Short">
+				<column name="total_seasons" not-null="true">
+					<comment>连续剧的总季数</comment>
+				</column>
+			</property>
+			<property name="season" type="java.lang.Short">
+				<column name="season">
+				</column>
+			</property>
+			<set name="category" inverse="false" table="multimedia_category"
+				fetch="select" lazy="false">
+				<key>
+					<column name="multimediaID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Category"
+					column="categoryID" />
+			</set>
+			<set name="singleSerials" inverse="true" order-by="episode">
+				<key>
+					<column name="commonID" not-null="true" />
+				</key>
+				<one-to-many class="edu.tju.ina.seeworld.po.resource.SingleSerial" />
+			</set>
+			<set name="directors" table="multimedia_directors" lazy="false">
+				<key>
+					<column name="mID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Director" column="dID" />
+			</set>
+			<set name="actors" table="multimedia_actors" lazy="false">
+				<key>
+					<column name="mID" not-null="true" />
+				</key>
+				<many-to-many class="edu.tju.ina.seeworld.po.resource.Actor" column="aID" />
+			</set>
+		</joined-subclass>
+		
+		<!--=============================子类SingleSerial=========================-->
+		<joined-subclass name="edu.tju.ina.seeworld.po.resource.SingleSerial" table="singleserial">
+			<key column="ID" />
+			<many-to-one name="serial"
+				class="edu.tju.ina.seeworld.po.resource.Serial" fetch="select">
+				<column name="commonID" not-null="true" />
+			</many-to-one>
+			<property name="path" type="java.lang.String">
+				<column name="path" length="345" not-null="true">
+					<comment>文件的存储路径</comment>
+				</column>
+			</property>
+			<property name="episode" type="java.lang.Short">
+				<column name="episode" not-null="true" />
+			</property>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

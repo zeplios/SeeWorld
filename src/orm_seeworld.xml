@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-init-method="initDao">
+
+	<!--==========start of basic part=========-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/seeworld_db?characterEncoding=UTF-8" />
+		<property name="user" value="root" />
+		<property name="password" value="" />
+
+		<property name="maxPoolSize" value="20" />
+		<property name="minPoolSize" value="10" />
+		<property name="initialPoolSize" value="4" />
+		<property name="maxIdleTime" value="20000" />
+		<property name="idleConnectionTestPeriod" value="19000" />
+		<property name="testConnectionOnCheckin" value="true" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:/edu/tju/ina/seeworld/po/
+				</value>
+			</list>
+		</property>
+		<property name="lobHandler" ref="lobHandler"></property>
+	</bean>
+
+	<bean name="openSessionInViewInterceptor"
+		class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="flushMode" value="1" />
+		<property name="singleSession" value="false" />
+	</bean>
+
+
+	<!-- 事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save" propagation="REQUIRED" />
+			<tx:method name="delete" propagation="REQUIRED" />
+			<tx:method name="update" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+
+	<!-- AOP 日志处理 -->
+	<bean id="logAspect" class="edu.tju.ina.seeworld.aop.LogAspect" />
+
+	<aop:config>
+		<aop:pointcut id="daoPointcut"
+			expression="execution(* edu.tju.ina.seeworld.dao..*.*(..))" />
+		<aop:pointcut id="exceptionPointcut" expression="execution(* *.*(..))" />
+
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoPointcut" />
+
+		<aop:aspect id="loggingAround" ref="logAspect">
+			<!--
+				<aop:before pointcut-ref="daoLogPointcut" method="loggingBefore" />
+				<aop:after-returning pointcut-ref="daoLogPointcut"
+				method="loggingAfter" />
+			-->
+			<aop:around pointcut-ref="daoPointcut" method="loggingAround" />
+
+			<!--
+				<aop:after-throwing pointcut-ref="exceptionLogPointcut"
+				throwing="throwable" method="afterThrowing" />
+			-->
+		</aop:aspect>
+	</aop:config>
+
+	<!--=========end of basic part=========-->
+
+	<!--=========BLOB PART=========-->
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true">
+	</bean>
+	<!---=========END OF BLOB PART=========-->
+
+
+	<!--################Start#####DAO PART############################-->
+	<bean id="baseHibernateDao" class="edu.tju.ina.seeworld.dao.common.BaseHibernateDAO"
+		abstract="true">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<!-- #############开始#####User相关DAO ####################-->
+	<bean id="academyDao" class="edu.tju.ina.seeworld.dao.user.AcademyDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="collectionDao" class="edu.tju.ina.seeworld.dao.user.CollectionDAO"
+		parent="baseHibernateDao" />
+	<bean id="commentDao" class="edu.tju.ina.seeworld.dao.user.CommentDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="userDao" class="edu.tju.ina.seeworld.dao.user.UserDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="messageDao" class="edu.tju.ina.seeworld.dao.user.MessageDAO"
+		parent="baseHibernateDao" />
+	<bean id="specialtyDao" class="edu.tju.ina.seeworld.dao.user.SpecialtyDAO"
+		parent="baseHibernateDao" />
+	<bean id="friendDao" class="edu.tju.ina.seeworld.dao.user.FriendDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="requestDao" class="edu.tju.ina.seeworld.dao.user.RequestDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="newThingsDAO" class="edu.tju.ina.seeworld.dao.user.NewThingsDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="newThingsReplyDao" class="edu.tju.ina.seeworld.dao.user.NewThingsReplyDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="privacySettingDAO" class="edu.tju.ina.seeworld.dao.user.PrivacySettingDAO"
+
+		parent="baseHibernateDao" />
+	<bean id="recommendationDao" class="edu.tju.ina.seeworld.dao.user.RecommendationDAO"
+		parent="baseHibernateDao" />
+	<bean id="statusDao" class="edu.tju.ina.seeworld.dao.user.StatusDAO"
+		parent="baseHibernateDao" />
+	<bean id="invitationCodeDao" class="edu.tju.ina.seeworld.dao.user.InvitationCodeDAO"
+		parent="baseHibernateDao" />
+	<!-- ##############结束#######用户相关DAO################ -->
+	<!--
+		####################开始##### resource 相关的DAO ########################
+	-->
+	<bean id="actorDao" class="edu.tju.ina.seeworld.dao.resource.ActorDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="areaAndCountryDao" class="edu.tju.ina.seeworld.dao.resource.AreaAndCountryDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="categoryDao" class="edu.tju.ina.seeworld.dao.resource.CategoryDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="directorDao" class="edu.tju.ina.seeworld.dao.resource.DirectorDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="lecturerDao" class="edu.tju.ina.seeworld.dao.resource.LecturerDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="organizationDao" class="edu.tju.ina.seeworld.dao.resource.OrganizationDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="formatDao" class="edu.tju.ina.seeworld.dao.resource.FormatDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="keyWordDao" class="edu.tju.ina.seeworld.dao.resource.KeyWordDAO"
+		parent="baseHibernateDao" />
+
+
+	<bean id="keyWordRelationshipDao"
+		class="edu.tju.ina.seeworld.dao.resource.KeyWordRelationshipDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="multimediaDao" class="edu.tju.ina.seeworld.dao.resource.MultimediaDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="movieDao" class="edu.tju.ina.seeworld.dao.resource.MovieDAO"
+		parent="baseHibernateDao">
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+
+	<bean id="videoDao" class="edu.tju.ina.seeworld.dao.resource.VideoDAO"
+		parent="baseHibernateDao">
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+
+	<bean id="serialDao" class="edu.tju.ina.seeworld.dao.resource.SerialDAO"
+		parent="baseHibernateDao" >
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+
+	<bean id="singleSerialDao" class="edu.tju.ina.seeworld.dao.resource.SingleSerialDAO"
+		parent="baseHibernateDao" />
+	
+	<bean id="mainpageDao" class="edu.tju.ina.seeworld.dao.resource.MainpageDAO"
+		parent="baseHibernateDao" />
+	<!-- ###############结束#####资源相关DAO######################### -->
+	<!--
+		===================开始====权限控制相关DAO================================
+	-->
+	<bean id="resourceDao" class="edu.tju.ina.seeworld.dao.rbac.ResourceDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="operationDao" class="edu.tju.ina.seeworld.dao.rbac.OperationDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="permissionDao" class="edu.tju.ina.seeworld.dao.rbac.PermissionDAO"
+		parent="baseHibernateDao" />
+
+	<bean id="roleDao" class="edu.tju.ina.seeworld.dao.rbac.RoleDAO"
+		parent="baseHibernateDao" />
+	<bean id="settingDao" class="edu.tju.ina.seeworld.dao.rbac.SettingDAO"
+		parent="baseHibernateDao" />
+	<!--===================结束===极限控制相关DAO=======================-->
+
+
+	<!--=================END OF DAO PART=================-->
+	<!-- ====================Utils 配置============================ -->
+	<bean id="iDAssistant" class="edu.tju.ina.seeworld.util.IDAssistant"
+		init-method="init">
+		<property name="roleDao" ref="roleDao"></property>
+		<property name="resourceDao" ref="resourceDao"></property>
+		<property name="operationDao" ref="operationDao"></property>
+	</bean>
+	<bean id="vOPOTransformator" class="edu.tju.ina.seeworld.util.VOPOTransformator">
+		<property name="multimediaDao" ref="multimediaDao"></property>
+		<property name="commentDao" ref="commentDao"></property>
+		<property name="collectionDao" ref="collectionDao"></property>
+		<property name="recommendationDao" ref="recommendationDao"></property>
+		<property name="iDAssistant" ref="iDAssistant"></property>
+	</bean>
+</beans>

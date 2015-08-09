@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url("common.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("formstyle.css");
+@import url("content_item.css");
+@import url("page_flip.css");
+
+/*内容列表的分栏标题*/
+h3{height:50px;border-bottom:2px solid;background:url(../images/bg_title.png) no-repeat;text-indent:-999em;}
+
+.updates_more{position:relative;float:right;top:30px;padding-right:20px;color:#333;font-size:15px;text-indent:0em;}
+
+.updates_h3_a,
+.recommend_h3_a,
+.popular_h3_a,
+.region_western_h3_a,
+.region_hk_h3_a,
+.region_native_h3_a,
+.region_jp_h3_a{float:left;height:45px;}
+
+/*蓝色系标题*/
+.updates_h3,
+.recommend_h3,
+.region_western_h3,
+.region_hk_h3,
+.region_native_h3,
+.region_jp_h3{border-color:#4763b6;}
+
+/*红色系标题*/
+.popular_h3{border-color:#d9354f;}
+
+/*图标差异和点击区域宽度*/
+.updates_h3{background-position:0 0;}
+.updates_h3_a{width:230px;}
+.recommend_h3{background-position:0 -100px;}
+.recommend_h3_a{width:220px;}
+.popular_h3{background-position:0 -50px;}
+.popular_h3_a{width:210px;}
+
+/*2012-10-13 新增标题，欧美，港台，大陆，日韩*/
+.region_western_h3{background-position:0 -150px;}
+.region_hk_h3{background-position:0 -200px;}
+.region_native_h3{background-position:0 -250px;}
+.region_jp_h3{background-position:0 -300px;}
+
+.region_western_h3_a{width:150px;}
+.region_hk_h3_a{width:220px;}
+.region_native_h3_a{width:140px;}
+.region_jp_h3_a{width:230px;}

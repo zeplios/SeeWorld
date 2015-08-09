@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+/*------CSS初始化------*/
+a img {border:none;}
+a {text-decoration:none;}
+em,var,cite {font-style:normal;}
+strong {font-weight:normal;}
+ul,ol {padding:0;list-style-type:none;}
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,p {margin:0;}
+body,td,th,h1,h2,h3,h4,h5,h6 {font-size:12px;font-family:"Microsoft YaHei","YouYuan","SimHei",sans-serif,"SimSun";}
+input,textarea,a,button {outline:none;}
+input::-moz-focus-inner {border:0;}
+/*line-height用于统一不同浏览器的行高*/
+body {background:#fff;line-height:14px;}
+input,textarea,button {border:0 none;background:#fff;}
+a:hover {text-decoration:underline;}
+
+.clearfix:before, .clearfix:after {display:table;content:"";}
+.clearfix:after {clear:both;}
+.clearfix {zoom:1;}
+
+/*背景及内容框架*/
+body {background:url(../images/bg.png) repeat;}
+.main{width:950px;margin:0 auto ;padding-top:60px;overflow:hidden;color:#333;}
+.main_col_l{float:left;width:630px;}
+.main_col_r{float:right;width:280px;}

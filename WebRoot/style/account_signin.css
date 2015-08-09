@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* account_signin.css */
+
+@import url("common.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("formstyle.css");
+
+/*宽度为670px的区域*/
+.narrow_main{min-height:800px;_height:800px;width:670px;margin:0 auto;}
+.narrow_main .narrow_container_outside{border-top:3px solid #d63952;}
+.narrow_main .narrow_container_inside{min-height:600px;_height:600px;padding:20px 40px;border:1px solid #aaa;border-top:0 none;background:#f8f8f8;}
+
+/*注册页内容*/
+.signin_h2{height:60px;margin-bottom:10px;background:url(../images/special_title.png) 0 0 no-repeat;text-indent:-999em;}
+.top_note{padding:0 0 10px 0;color:#d9304b;}
+.signin_table_container{padding-top:10px;}
+.signin_table{width:100%;}
+.signin_table td{padding:14px 0;}
+.signin_table .item_title{width:75px;font-size:14px;text-align:right;}
+.signin_table .item_content{text-align:left;}
+.signin_table .form_note,
+.signin_table .form_note_error{float:left;padding:4px 15px;}
+.signin_table .form_note{color:#999;}
+.signin_table .form_note_error{color:#d63952;}
+
+/*注册条款*/
+.signin_rules{padding:10px 0 0 30px;}
+.signin_rules .rule_note{margin-bottom:10px;}
+.signin_rules .rule_note_a{font-size:14px;color:#1184b4;}
+.signin_rules .rule_content{width:400px;height:200px;padding:5px;border:1px solid #999;background:#fff;overflow:auto;font-size:12px;}
+
+/*注册按钮*/
+.submit_container{padding:30px 0 0 30px;}
+.submit_container .signin_btn{display:inline-block;width:83px;height:32px;background:url(../images/special_btns.png) no-repeat;}
+.submit_container .signin_btn:hover{background-position:-83px 0;}
+.submit_container .signin_btn:active{background-position:-166px 0;}

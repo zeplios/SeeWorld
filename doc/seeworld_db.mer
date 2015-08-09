@@ -1,0 +1,1574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ERDiagram version="1.1">
+  <Connection session="SeeWorld" database="seeworld_db" />
+  <Drawing gridVisible="false" snapOn="false" fastRouting="false" labelsVisible="true" />
+  <Tables>
+    <Table name="academy">
+      <Drawing expanded="true" location="2189,1513" dimensions="221,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="40" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="actor">
+      <Drawing expanded="true" location="3987,267" dimensions="285,150" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="30" />
+        </Column>
+        <Column name="count" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="name_english" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="85" />
+        </Column>
+        <Column name="area_country_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="area_country">
+      <Drawing expanded="true" location="4347,1283" dimensions="221,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="20" />
+        </Column>
+        <Column name="count" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="alias" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="45" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="category_multimedia">
+      <Drawing expanded="true" location="5146,298" dimensions="261,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="multimediaID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="categoryID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="category_serial">
+      <Drawing expanded="true" location="5507,298" dimensions="245,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="serialID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="categoryID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="category">
+      <Drawing expanded="true" location="5371,944" dimensions="221,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="50" />
+        </Column>
+        <Column name="parent" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="count" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="collection">
+      <Drawing expanded="true" location="2853,278" dimensions="242,128" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="user_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="target_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="resource_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="comment">
+      <Drawing expanded="true" location="2500,228" dimensions="253,227" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="writer_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="title" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="content" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="target_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="support" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="object" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="replyTo" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="resource_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="director">
+      <Drawing expanded="true" location="4770,267" dimensions="285,150" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="CHAR" size="10" />
+        </Column>
+        <Column name="count" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="name_english" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="45" />
+        </Column>
+        <Column name="area_country_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="document">
+      <Drawing expanded="true" location="2140,1648" dimensions="221,110" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="title" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="80" />
+        </Column>
+        <Column name="alias" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="filecache">
+      <Drawing expanded="true" location="308,1648" dimensions="289,250" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="multimediaID" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sequence" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT" size="3" />
+        </Column>
+        <Column name="uploadType" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="uploadStatus" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="uploader" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="path" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="200" />
+        </Column>
+        <Column name="other_info" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="size" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="MEDIUMTEXT" size="16777215" />
+        </Column>
+        <Column name="examine" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="format">
+      <Drawing expanded="true" location="3491,964" dimensions="221,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="fmt" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="friend">
+      <Drawing expanded="true" location="1122,288" dimensions="261,108" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="one_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="the_other_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="invitation_code">
+      <Drawing expanded="true" location="790,277" dimensions="232,129" />
+      <Columns>
+        <Column name="Id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="CHAR" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="expiredTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="used" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="owner_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="keyword">
+      <Drawing expanded="true" location="5919,964" dimensions="221,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="keyword" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="20" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="keywordrelationship">
+      <Drawing expanded="true" location="5852,278" dimensions="237,128" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="target_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="weight" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="keyword_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="lecturer">
+      <Drawing expanded="true" location="405,287" dimensions="285,109" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="45" />
+        </Column>
+        <Column name="organization_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="message">
+      <Drawing expanded="true" location="948,1648" dimensions="253,210" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="receiver_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="sender_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="content" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="600" />
+        </Column>
+        <Column name="readed" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="concealed" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="reply" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="location" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="movie">
+      <Drawing expanded="true" location="3569,218" dimensions="274,248" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sections" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="section_num" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="format_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="size" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="uploader_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="status" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="process" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="FLOAT" size="12" />
+        </Column>
+        <Column name="deleteSign" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="path" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="200" />
+        </Column>
+        <Column name="sectionTitle" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="movies_actors">
+      <Drawing expanded="true" location="3886,0" dimensions="189,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="mID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="aID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="movies_directors">
+      <Drawing expanded="true" location="4970,0" dimensions="189,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="mID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="dID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="multimedia">
+      <Drawing expanded="true" location="3892,875" dimensions="298,268" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="title" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="50" />
+        </Column>
+        <Column name="image" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="200" />
+        </Column>
+        <Column name="introduction" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="clickCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="alias" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="85" />
+        </Column>
+        <Column name="publishedYear" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="collectedCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT UNSIGNED" size="20" />
+        </Column>
+        <Column name="resourceId" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="recommendedCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT UNSIGNED" size="20" />
+        </Column>
+        <Column name="area" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="new_things">
+      <Drawing expanded="true" location="1246,1648" dimensions="253,210" />
+      <Columns>
+        <Column name="sender_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="target_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="concealed" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="resource_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="firstReply" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="lastReply" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="replyNum" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="newthingsreply">
+      <Drawing expanded="true" location="1544,1648" dimensions="237,210" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sender" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="receiver" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="reply" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="content" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="500" />
+        </Column>
+        <Column name="newThings" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="readed" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="hostUser" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="operation">
+      <Drawing expanded="true" location="2707,1648" dimensions="200,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="organization">
+      <Drawing expanded="true" location="405,944" dimensions="285,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="45" />
+        </Column>
+        <Column name="introduction" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="1000" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="area_country_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="permission">
+      <Drawing expanded="true" location="0,1283" dimensions="200,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="oID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="rID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="45" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="playcache">
+      <Drawing expanded="true" location="0,1648" dimensions="263,370" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="title" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="50" />
+        </Column>
+        <Column name="image" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="200" />
+        </Column>
+        <Column name="introduction" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="alias" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="85" />
+        </Column>
+        <Column name="published_year" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="area" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="directorName" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="50" />
+        </Column>
+        <Column name="actorName" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="keyword" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="category_id" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sub_category" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="50" />
+        </Column>
+        <Column name="uploadUser" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="multimediaID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="examine" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="directory" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="privacy_setting">
+      <Drawing expanded="true" location="1483,277" dimensions="237,129" />
+      <Columns>
+        <Column name="Id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="owner_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="type_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" />
+        </Column>
+        <Column name="concealed" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="recommendation">
+      <Drawing expanded="true" location="1826,1648" dimensions="269,190" />
+      <Columns>
+        <Column name="Id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="sender_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="receiver_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="multimedia_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="message" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="isRead" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="resource_id" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="request">
+      <Drawing expanded="true" location="2149,288" dimensions="221,108" />
+      <Columns>
+        <Column name="Id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="sender_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="reciever_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="resource">
+      <Drawing expanded="true" location="3385,1303" dimensions="200,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="20" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="role_permission">
+      <Drawing expanded="true" location="144,965" dimensions="161,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="rID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="pID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="role">
+      <Drawing expanded="true" location="382,1303" dimensions="200,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="50" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="serial">
+      <Drawing expanded="true" location="4633,935" dimensions="306,148" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="seasons" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="area_country_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="title" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="alias" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="resourceId" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="serials_actors">
+      <Drawing expanded="true" location="4209,0" dimensions="229,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="actorID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="serialID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="serials_directors">
+      <Drawing expanded="true" location="4596,0" dimensions="245,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="directorID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="serialID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="singleserial">
+      <Drawing expanded="true" location="4372,188" dimensions="298,308" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="commonID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sectionTitle" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="image" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="200" />
+        </Column>
+        <Column name="introduction" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="clickCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="sectionAlias" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="publishedYear" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="collectedCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT UNSIGNED" size="20" />
+        </Column>
+        <Column name="recommendedCount" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIGINT UNSIGNED" size="20" />
+        </Column>
+        <Column name="season" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="episode" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="uploaderID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="specialty">
+      <Drawing expanded="true" location="2254,1293" dimensions="245,109" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="60" />
+        </Column>
+        <Column name="academy_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="status">
+      <Drawing expanded="true" location="1820,287" dimensions="229,109" />
+      <Columns>
+        <Column name="Id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="owner_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="status" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="300" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="tv_play">
+      <Drawing expanded="true" location="2406,1648" dimensions="256,109" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sequence" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="other_info" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="50" />
+        </Column>
+        <Column name="path" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="200" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="user">
+      <Drawing expanded="true" location="2125,856" dimensions="269,307" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="userName" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="50" />
+        </Column>
+        <Column name="password" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="50" />
+        </Column>
+        <Column name="realName" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="20" />
+        </Column>
+        <Column name="academy_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="specialty_id" primary_key="false" foreign_key="true" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="photo_path" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+        <Column name="role_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="addTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="email" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="50" />
+        </Column>
+        <Column name="uid" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="15" />
+        </Column>
+        <Column name="enabled" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="lastLoginTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+        <Column name="loginTimes" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="uuseeid">
+      <Drawing expanded="true" location="642,1648" dimensions="261,250" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="processId" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="8" />
+        </Column>
+        <Column name="channelName" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="20" />
+        </Column>
+        <Column name="uid" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="40" />
+        </Column>
+        <Column name="guid" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="40" />
+        </Column>
+        <Column name="tcp" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="6" />
+        </Column>
+        <Column name="udp" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="VARCHAR" size="6" />
+        </Column>
+        <Column name="mmsurl" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="60" />
+        </Column>
+        <Column name="category" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="20" />
+        </Column>
+        <Column name="targetServer" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="70" />
+        </Column>
+        <Column name="modifiedTime" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TIMESTAMP" size="19" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="video">
+      <Drawing expanded="true" location="3195,218" dimensions="274,248" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="true" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="sections" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="section_num" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TINYINT UNSIGNED" size="3" />
+        </Column>
+        <Column name="format_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="path" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="CHAR" size="200" />
+        </Column>
+        <Column name="size" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="uploader_id" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="VARCHAR" size="128" />
+        </Column>
+        <Column name="status" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="process" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="FLOAT" size="12" />
+        </Column>
+        <Column name="deleteSign" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="sectionTitle" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="100" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="videos_lecturers">
+      <Drawing expanded="true" location="1726,0" dimensions="189,88" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="vID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+        <Column name="lID" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="INT UNSIGNED" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <Relationships>
+    <Relationship name="FK_category_multimedia_category">
+      <Details primary_table="category" foreign_table="category_multimedia">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="categoryID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_category_multimedia_multimedia">
+      <Details primary_table="multimedia" foreign_table="category_multimedia">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="multimediaID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_category_serial_category">
+      <Details primary_table="category" foreign_table="category_serial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="categoryID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_category_serial_serial">
+      <Details primary_table="serial" foreign_table="category_serial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="serialID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_collection_resource">
+      <Details primary_table="resource" foreign_table="collection">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="resource_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_collection_user">
+      <Details primary_table="user" foreign_table="collection">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="user_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_comment_resource">
+      <Details primary_table="resource" foreign_table="comment">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="resource_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_comment_replytarget">
+      <Details primary_table="comment" foreign_table="comment">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="replyTo" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_comment_user">
+      <Details primary_table="user" foreign_table="comment">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="writer_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_friend_one">
+      <Details primary_table="user" foreign_table="friend">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="one_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_friend_theother">
+      <Details primary_table="user" foreign_table="friend">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="the_other_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_invitation_code_owner">
+      <Details primary_table="user" foreign_table="invitation_code">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="owner_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_keywordrelationship_keywordid">
+      <Details primary_table="keyword" foreign_table="keywordrelationship">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="keyword_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_keywordrelationship_targetMulti">
+      <Details primary_table="multimedia" foreign_table="keywordrelationship">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="target_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_lecturer_organization">
+      <Details primary_table="organization" foreign_table="lecturer">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="organization_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movie_user">
+      <Details primary_table="user" foreign_table="movie">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="uploader_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movie_id">
+      <Details primary_table="multimedia" foreign_table="movie">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="ID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movie_format">
+      <Details primary_table="format" foreign_table="movie">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="format_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movies_actors_multi">
+      <Details primary_table="multimedia" foreign_table="movies_actors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="mID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movies_actors_actor">
+      <Details primary_table="actor" foreign_table="movies_actors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="aID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movies_directors_d">
+      <Details primary_table="director" foreign_table="movies_directors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="dID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_movies_directors_m">
+      <Details primary_table="multimedia" foreign_table="movies_directors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="mID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_multimedia_areacountry">
+      <Details primary_table="area_country" foreign_table="multimedia">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="area" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_multimedia_resource">
+      <Details primary_table="resource" foreign_table="multimedia">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="resourceId" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_privacy_setting_owner">
+      <Details primary_table="user" foreign_table="privacy_setting">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="owner_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_request_sender">
+      <Details primary_table="user" foreign_table="request">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="sender_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_request_receiver">
+      <Details primary_table="user" foreign_table="request">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="reciever_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_role_permission_r">
+      <Details primary_table="role" foreign_table="role_permission">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="rID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_role_permission_p">
+      <Details primary_table="permission" foreign_table="role_permission">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="pID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serial_resource">
+      <Details primary_table="resource" foreign_table="serial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="resourceId" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serial_areacountry">
+      <Details primary_table="area_country" foreign_table="serial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="area_country_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serials_actors_serial">
+      <Details primary_table="singleserial" foreign_table="serials_actors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="serialID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serials_actors_actor">
+      <Details primary_table="actor" foreign_table="serials_actors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="actorID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serials_directors_serial">
+      <Details primary_table="singleserial" foreign_table="serials_directors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="serialID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_serials_directors_director">
+      <Details primary_table="director" foreign_table="serials_directors">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="directorID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_singleserial_user">
+      <Details primary_table="user" foreign_table="singleserial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="uploaderID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_singleserial_commonId">
+      <Details primary_table="serial" foreign_table="singleserial">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="commonID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_specialty_academy">
+      <Details primary_table="academy" foreign_table="specialty">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="academy_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_status_owner">
+      <Details primary_table="user" foreign_table="status">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="owner_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_user_specialty">
+      <Details primary_table="specialty" foreign_table="user">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="specialty_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_user_role">
+      <Details primary_table="role" foreign_table="user">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="role_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_user_academy">
+      <Details primary_table="academy" foreign_table="user">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="academy_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_video_user">
+      <Details primary_table="user" foreign_table="video">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="uploader_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_video_id">
+      <Details primary_table="multimedia" foreign_table="video">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="ID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_video_format">
+      <Details primary_table="format" foreign_table="video">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="format_id" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_videos_lecturers_2">
+      <Details primary_table="lecturer" foreign_table="videos_lecturers">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="lID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="FK_videos_lecturers_1">
+      <Details primary_table="video" foreign_table="videos_lecturers">
+        <PrimaryKeys>
+          <ColumnName name="ID" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="vID" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+  </Relationships>
+</ERDiagram>
+

@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*列表模块显示信息公用的部分*/
+.v_name_a{color:#333;}
+.v_img_a{display:inline-block;}
+.v_info{padding:4px 0 0 0;color:#666;line-height:16px;}
+.v_info .click_count{float:left;height:16px;padding-left:15px;background:url(../images/bg_ico.png) no-repeat 0 -126px;}
+.v_info .comment_count{display:inline;float:left;height:16px;margin-left:30px;padding-left:20px;background:url(../images/bg_ico.png) no-repeat 0 -149px;}
+
+/*视频列表模块(16:9的封面)*/
+.video_container{margin-top:20px;padding:0 20px 0 30px;}
+.video_list{width:615px;margin-left:-35px;overflow:hidden;}
+.video_li{display:inline;float:left;width:170px;margin-left:35px;padding-bottom:20px;}
+.video_li .cover_large_box{position:relative;width:170px;height:100px;background:url(../images/box_shadow.png) no-repeat 0 0;_background-image:url(../images/box_shadow_ie6.gif);}
+.video_li .v_time_mask{position:absolute;width:42px;height:16px;background:#000;opacity:0.6;filter:alpha(opacity=60);top:74px;right:10px;}
+.video_li .v_time{position:absolute;width:42px;height:16px;color:#fff;font-family:"SimSun",sans-serif;text-align:center;line-height:16px;top:74px;right:10px;}
+.video_li .v_name{height:24px;padding-right:9px;line-height:24px;}
+
+/*电影列表模块(3:4的封面)*/
+.movie_container{margin-top:20px;padding:0 25px 0 25px;}
+.movie_list{width:620px;margin-left:-30px;overflow:hidden;}
+.movie_li{display:inline;float:left;width:125px;margin-left:30px;padding-bottom:20px;}
+.movie_li .cover_vertical_box{position:relative;width:125px;height:160px;background:url(../images/box_shadow.png) no-repeat 0 -110px;_background-image:url(../images/box_shadow_ie6.gif);}
+.movie_li .v_time_mask{position:absolute;width:36px;height:16px;background:#000;opacity:0.6;filter:alpha(opacity=60);top:136px;right:11px;}
+.movie_li .v_time{position:absolute;width:36px;height:16px;color:#fff;font-family:"SimSun",sans-serif;text-align:center;line-height:16px;top:136px;right:11px;}
+.movie_li .v_name{height:24px;padding-right:10px;line-height:24px;}
+
+/*侧边较小的列表显示模块(支持16:9及3:4两种封面)*/
+.sidebar_list{margin-top:20px;}
+.sidebar_list .sidebar_li_vital,
+.sidebar_list .sidebar_li{width:280px;margin-bottom:20px;overflow:hidden;}
+.sidebar_list .cover_small_box,
+.sidebar_list .cover_small_vertical_box{float:left;padding:1px;border:1px solid #bbb;background-color:#fff;}
+.sidebar_list .cover_small_box{width:112px;height:63px;overflow:hidden;}
+.sidebar_list .cover_small_vertical_box{width:84px;height:112px;overflow:hidden;}
+.sidebar_list .v_info_box{margin-left:125px;}
+.sidebar_list .v_info_vertical_box{margin-left:97px;}
+.sidebar_list .v_name{margin-bottom:5px;line-height:20px;}
+
+/*singleSerial观看页中的serial的单集列表*/
+.singleserial_a{float: left;height: 20px;padding: 0 10px;border: 1px solid #BBB;line-height: 20px;}
+.singleserial_a:hover{border-color: #347AE3;background-color: #5498FC;color: white;text-decoration: none;}
+.singleserial_span{float: left;color: #999;height: 20px;padding: 0 10px;border: 1px solid #BBB;line-height: 20px;}

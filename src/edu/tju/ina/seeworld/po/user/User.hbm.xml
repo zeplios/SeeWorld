@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="edu.tju.ina.seeworld.po.user.User" table="user"
+		catalog="seeworld_db" dynamic-update="true">
+		<id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+		<!-- 与Role的双向一对多配置 -->
+		<many-to-one name="role" class="edu.tju.ina.seeworld.po.rbac.Role"
+			outer-join="auto" fetch="select" lazy="false">
+			<column name="role_id" />
+		</many-to-one>
+
+		<many-to-one name="specialty" class="edu.tju.ina.seeworld.po.user.Specialty"
+			fetch="select" >
+			<column name="specialty_id" />
+		</many-to-one>
+		<many-to-one name="academy" class="edu.tju.ina.seeworld.po.user.Academy"
+			fetch="select" >
+			<column name="academy_id" />
+		</many-to-one>
+		<property name="username" type="java.lang.String">
+			<column name="userName" length="50" not-null="true" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" length="50" not-null="true" />
+		</property>
+		<property name="realName" type="java.lang.String">
+			<column name="realName" length="20" />
+		</property>
+		<property name="photoPath" type="java.lang.String">
+			<column name="photo_path" length="100" />
+		</property>
+		<property name="addTime" type="java.sql.Timestamp">
+			<column name="addTime" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" length="50" not-null="true" />
+		</property>
+		<property name="uid" type="java.lang.String">
+			<column name="uid" length="15" not-null="false">
+				<comment>学生学号,教师工作号</comment>
+			</column>
+		</property>
+		<property name="enabled" type="java.lang.Boolean">
+			<column name="enabled" length="1" not-null="true" />
+		</property>
+		<property name="lastLoginTime" type="java.sql.Timestamp">
+			<column name="lastLoginTime" />
+		</property>
+		<property name="loginTimes" type="java.lang.Integer">
+			<column name="loginTimes" not-null="true" />
+		</property>
+		<set name="comments" inverse="true">
+			<key>
+				<column name="writer_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Comment" />
+		</set>
+		<set name="invitationCodes" inverse="true">
+			<key>
+				<column name="owner_id" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.InvitationCode" />
+		</set>
+		<set name="status" inverse="true">
+			<key>
+				<column name="owner_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Status" />
+		</set>
+		<set name="videos" inverse="true">
+			<key>
+				<column name="uploader_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.resource.Video" />
+		</set>
+		<set name="messagesReceived" inverse="true">
+			<key>
+				<column name="receiver_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Message" />
+		</set>
+		<set name="messagesSent" inverse="true">
+			<key>
+				<column name="sender_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Message" />
+		</set>
+		<set name="movies" inverse="true">
+			<key>
+				<column name="uploader_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.resource.Movie" />
+		</set>
+
+		<set name="recommendationsReceived" inverse="true" order-by="addTime desc">
+			<key>
+				<column name="receiver_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Recommendation" />
+		</set>
+		<set name="recommendationsSent" inverse="true" order-by="addTime desc">
+			<key>
+				<column name="sender_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Recommendation" />
+		</set>
+		<set name="collections" inverse="true" order-by="addTime desc">
+			<key>
+				<column name="user_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Collection" />
+		</set>
+		<set name="friendsOffer" inverse="true">
+			<key>
+				<column name="one_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Friend" />
+		</set>
+		<set name="friendsTheOther" inverse="true">
+			<key>
+				<column name="the_other_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Friend" />
+		</set>
+		<set name="friendRequestReceived" inverse="true">
+			<key>
+				<column name="reciever_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Request" />
+		</set>
+		<set name="friendRequestSent" inverse="true">
+			<key>
+				<column name="sender_id" not-null="true" />
+			</key>
+			<one-to-many class="edu.tju.ina.seeworld.po.user.Request" />
+		</set>
+	</class>
+</hibernate-mapping>
